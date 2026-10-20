@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Avery! ✨ A Magical RGB Celebration</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome & Tailwind CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        :root {
+            --primary-font: 'Poppins', sans-serif;
+            --serif-font: 'Playfair Display', serif;
+            --title-font: 'Cinzel Decorative', cursive;
+            --hand-font: 'Dancing Script', cursive;
+            --rgb-speed: 12s;
+        }
+
+        body {
+            font-family: var(--primary-font);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: #030712;
+            color: #ffffff;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* CUSTOM RGB AMBIENT LIGHTING GLOW ENGINE */
+        .rgb-aura-bg {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.8;
+            background: linear-gradient(125deg, #ff0055, #7928ca, #00dfd8, #ff0080, #0070f3, #7928ca);
+            background-size: 400% 400%;
+            animation: rgbGradientShift var(--rgb-speed) ease infinite;
+            mix-blend-mode: color-dodge;
+            filter: blur(80px);
+        }
+
+        @keyframes rgbGradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* RGB GLOW BORDERS & NEON EFFECTS */
+        .rgb-border {
+            position: relative;
+        }
+        .rgb-border::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: inherit;
+            padding: 2px;
+            background: linear-gradient(45deg, #ff0055, #00e5ff, #7000ff, #ff0055);
+            background-size: 300% 300%;
+            animation: rgbBorderMove 4s linear infinite;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        @keyframes rgbBorderMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* GLASSMORPHISM CARDS */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            border-radius: 1.75rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.35);
+            box-shadow: 0 25px 60px rgba(0, 229, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            transform: translateY(-5px);
+        }
+
+        /* PAGE CONTAINER TRANSITIONS */
+        .page-container {
+            display: none;
+            min-height: 100vh;
+            width: 100vw;
+            position: relative;
+            opacity: 0;
+            transition: opacity 0.7s ease, transform 0.7s ease;
+            transform: scale(0.96) translateY(20px);
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+            z-index: 10;
+        }
+
+        .page-container.active {
+            display: flex;
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        /* TYPOGRAPHY GRADIENTS */
+        .font-title { font-family: var(--title-font); }
+        .font-serif { font-family: var(--serif-font); }
+        .font-hand { font-family: var(--hand-font); }
+
+        .text-gradient-rgb {
+            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 30%, #ff0844 70%, #ffb199 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textShimmer 5s linear infinite;
+        }
+
+        @keyframes textShimmer {
+            to { background-position: 200% center; }
+        }
+
+        /* 3D FLIP MEMORY CARDS */
+        .flip-card {
+            perspective: 1200px;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 1.5rem;
+        }
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+
+        /* CAKE & INTERACTIVE CANDLES */
+        .flame {
+            width: 18px;
+            height: 28px;
+            background: linear-gradient(to bottom, #ffffff, #ff9900, #ff0055);
+            border-radius: 80% 80% 20% 20%;
+            position: absolute;
+            top: -26px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: flicker 0.5s infinite alternate ease-in-out;
+            box-shadow: 0 0 20px #ff9900, 0 0 40px #ff0055, 0 0 60px #ff0000;
+        }
+        .flame.extinguished {
+            display: none;
+        }
+        .smoke {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 10px;
+            background: rgba(220, 220, 220, 0.7);
+            border-radius: 50%;
+            animation: smokeRise 1.8s forwards ease-out;
+        }
+
+        @keyframes flicker {
+            0% { transform: translateX(-50%) scale(1) rotate(-3deg); }
+            100% { transform: translateX(-50%) scale(1.2) rotate(3deg); opacity: 0.95; }
+        }
+
+        @keyframes smokeRise {
+            0% { opacity: 0.9; transform: translateX(-50%) translateY(0) scale(1); }
+            100% { opacity: 0; transform: translateX(-50%) translateY(-60px) scale(3.5); }
+        }
+
+        /* GIFT BOX 3D UNBOXING */
+        .gift-box {
+            position: relative;
+            width: 130px;
+            height: 130px;
+            cursor: pointer;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .gift-box:hover {
+            transform: scale(1.08) rotate(3deg);
+        }
+        .gift-lid {
+            position: absolute;
+            top: 0;
+            left: -6px;
+            width: 142px;
+            height: 34px;
+            background: linear-gradient(135deg, #ff0055, #e11d48);
+            border-radius: 8px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+            z-index: 2;
+            transition: transform 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.5s;
+        }
+        .gift-box.open .gift-lid {
+            transform: translateY(-90px) rotate(-25deg) scale(0.85);
+            opacity: 0;
+        }
+        .gift-body {
+            position: absolute;
+            top: 28px;
+            width: 130px;
+            height: 102px;
+            background: linear-gradient(135deg, #be123c, #881337);
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            overflow: hidden;
+        }
+        .gift-ribbon-v {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 26px;
+            height: 100%;
+            background: #fbbf24;
+            box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+        }
+        .gift-ribbon-h {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            height: 26px;
+            background: #fbbf24;
+            box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+        }
+
+        /* NAV BUTTON GLOWS */
+        .nav-btn.active {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(0, 229, 255, 0.6);
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+            color: #ffffff;
+        }
+
+        /* CUSTOM PULSE BUTTON */
+        .pulse-btn {
+            animation: pulseGlow 2.5s infinite;
+        }
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.7); }
+            70% { box-shadow: 0 0 0 18px rgba(0, 229, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 229, 255, 0); }
+        }
+    </style>
+</head>
+<body class="relative min-h-screen w-screen overflow-x-hidden bg-gray-950">
+
+    <!-- AMBIENT RGB AURA LIGHTING -->
+    <div class="rgb-aura-bg"></div>
+
+    <!-- CANVAS ENGINE: REAL-TIME SNOWFALL, FLOATING PETALS, BALLOONS & FIREWORKS -->
+    <canvas id="main-canvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0"></canvas>
+    <canvas id="fireworks-canvas" class="fixed top-0 left-0 w-full h-full pointer-events-auto z-30 hidden"></canvas>
+
+    <!-- NAVIGATION HEADER BAR -->
+    <nav class="fixed top-0 left-0 w-full z-50 px-4 md:px-8 py-3.5 flex items-center justify-between glass-card rounded-none border-t-0 border-x-0 bg-slate-950/70 backdrop-blur-xl">
+        <div class="flex items-center space-x-3 cursor-pointer" onclick="switchPage(1)">
+            <span class="text-2xl animate-spin" style="animation-duration: 10s;"><i class="fa-solid fa-sparkles text-cyan-400"></i></span>
+            <span class="font-title text-base md:text-xl font-bold tracking-widest text-gradient-rgb">Avery's Realm</span>
+        </div>
+
+        <!-- Desktop Navigation Items -->
+        <div class="hidden md:flex items-center space-x-2 bg-slate-900/80 p-1.5 rounded-full border border-white/10">
+            <button onclick="switchPage(1)" id="nav-btn-1" class="nav-btn active px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center space-x-2 border border-transparent hover:bg-white/10">
+                <i class="fa-solid fa-seedling text-pink-400"></i> <span>1. Blessings</span>
+            </button>
+            <button onclick="switchPage(2)" id="nav-btn-2" class="nav-btn px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center space-x-2 border border-transparent hover:bg-white/10">
+                <i class="fa-solid fa-snowflake text-cyan-400"></i> <span>2. Snow & Peace</span>
+            </button>
+            <button onclick="switchPage(3)" id="nav-btn-3" class="nav-btn px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center space-x-2 border border-transparent hover:bg-white/10">
+                <i class="fa-solid fa-heart text-purple-400"></i> <span>3. Friendship</span>
+            </button>
+            <button onclick="switchPage(4)" id="nav-btn-4" class="nav-btn px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center space-x-2 border border-transparent hover:bg-white/10">
+                <i class="fa-solid fa-cake-candles text-amber-400"></i> <span>4. Celebration</span>
+            </button>
+        </div>
+
+        <!-- Audio & Mobile Controls -->
+        <div class="flex items-center space-x-3">
+            <button id="audio-toggle" onclick="toggleAudio()" class="px-3.5 py-2 rounded-full bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/30 transition-all flex items-center space-x-2 text-xs font-semibold" title="Toggle Birthday Melody">
+                <i class="fa-solid fa-music text-sm"></i>
+                <span id="audio-label" class="hidden sm:inline">Play Melody</span>
+            </button>
+
+            <!-- Mobile Drawer Button -->
+            <button onclick="toggleMobileMenu()" class="md:hidden p-2.5 rounded-xl glass-card text-white text-lg">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU DROPDOWN -->
+    <div id="mobile-menu" class="fixed top-16 right-4 z-50 hidden glass-card p-4 w-68 flex-col space-y-3 bg-slate-950/95 border border-white/20 shadow-2xl">
+        <button onclick="switchPage(1); toggleMobileMenu();" class="w-full text-left px-4 py-3 rounded-xl text-sm font-semibold flex items-center space-x-3 text-pink-300 bg-pink-500/20">
+            <i class="fa-solid fa-seedling text-pink-400"></i> <span>1. Blessings Garden</span>
+        </button>
+        <button onclick="switchPage(2); toggleMobileMenu();" class="w-full text-left px-4 py-3 rounded-xl text-sm font-semibold flex items-center space-x-3 text-cyan-300 hover:bg-white/10">
+            <i class="fa-solid fa-snowflake text-cyan-400"></i> <span>2. Snow & Serenity</span>
+        </button>
+        <button onclick="switchPage(3); toggleMobileMenu();" class="w-full text-left px-4 py-3 rounded-xl text-sm font-semibold flex items-center space-x-3 text-purple-300 hover:bg-white/10">
+            <i class="fa-solid fa-heart text-purple-400"></i> <span>3. Eternal Friendship</span>
+        </button>
+        <button onclick="switchPage(4); toggleMobileMenu();" class="w-full text-left px-4 py-3 rounded-xl text-sm font-semibold flex items-center space-x-3 text-amber-300 hover:bg-white/10">
+            <i class="fa-solid fa-cake-candles text-amber-400"></i> <span>4. Party & Fireworks</span>
+        </button>
+    </div>
+
+    <!-- MAIN APP PAGES CONTAINER -->
+    <main class="relative z-10 w-full min-h-screen">
+
+        <!-- PAGE 1: BLESSINGS & DIVINE WISHES (Enchanted RGB Garden) -->
+        <section id="page-1" class="page-container active flex-col items-center justify-start px-4 md:px-12">
+            <div class="max-w-4xl w-full mx-auto text-center space-y-8">
+                
+                <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-pink-500/20 border border-pink-500/40 text-pink-300 text-xs md:text-sm tracking-widest uppercase font-bold">
+                    <i class="fa-solid fa-spa"></i> <span>Theme 1: Enchanted RGB Aura Garden</span>
+                </div>
+
+                <h1 class="font-title text-4xl md:text-7xl font-black text-gradient-rgb leading-tight tracking-wide">
+                    Blessings For Avery
+                </h1>
+                <p class="font-hand text-3xl md:text-5xl text-pink-200">
+                    A magical blooming wish for your special day ✨
+                </p>
+
+                <!-- Heartfelt Paragraph Card -->
+                <div class="glass-card rgb-border p-6 md:p-12 text-left space-y-6 relative overflow-hidden">
+                    <div class="absolute -right-12 -bottom-12 text-9xl text-pink-500/10 pointer-events-none">
+                        <i class="fa-solid fa-hands-praying"></i>
+                    </div>
+
+                    <p class="font-serif text-lg md:text-2xl text-pink-100/90 leading-relaxed first-letter:text-6xl first-letter:font-title first-letter:text-pink-400 first-letter:mr-3 first-letter:float-left">
+                        On this extraordinary day that marks your journey into another brilliant year, my heart fills with prayers for you, Avery. May your life be carpeted with celestial peace, unconditional love, and unshakeable inner happiness. You bring a warmth into this world that illuminates every single life you touch.
+                    </p>
+
+                    <p class="font-serif text-lg md:text-2xl text-pink-100/90 leading-relaxed">
+                        May every step you take open new doors to golden opportunities and overflowing contentment. As you turn this magnificent new page, may all your silent wishes gain wings and soar higher than ever imagined!
+                    </p>
+                </div>
+
+                <!-- Interactive Wish Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+                    <div onclick="revealWish(this, 'May your path always be illuminated by divine light & love.')" class="glass-card p-6 text-center cursor-pointer hover:border-pink-400/50 transition-all group">
+                        <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-pink-500/20 flex items-center justify-center text-pink-300 text-3xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
+                        <h3 class="font-serif font-bold text-xl text-pink-200 mb-2">Celestial Grace</h3>
+                        <p class="text-xs text-pink-300/70 italic">Click to unlock wish</p>
+                        <p class="wish-text hidden text-sm text-pink-100 font-serif mt-3 pt-3 border-t border-pink-500/30 animate-fadeIn"></p>
+                    </div>
+
+                    <div onclick="revealWish(this, 'May your heart overflow with endless happiness & smiles.')" class="glass-card p-6 text-center cursor-pointer hover:border-pink-400/50 transition-all group">
+                        <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-pink-500/20 flex items-center justify-center text-pink-300 text-3xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-sun"></i>
+                        </div>
+                        <h3 class="font-serif font-bold text-xl text-pink-200 mb-2">Boundless Joy</h3>
+                        <p class="text-xs text-pink-300/70 italic">Click to unlock wish</p>
+                        <p class="wish-text hidden text-sm text-pink-100 font-serif mt-3 pt-3 border-t border-pink-500/30 animate-fadeIn"></p>
+                    </div>
+
+                    <div onclick="revealWish(this, 'May success step in perfect harmony with your dreams.')" class="glass-card p-6 text-center cursor-pointer hover:border-pink-400/50 transition-all group">
+                        <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-pink-500/20 flex items-center justify-center text-pink-300 text-3xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <h3 class="font-serif font-bold text-xl text-pink-200 mb-2">Endless Success</h3>
+                        <p class="text-xs text-pink-300/70 italic">Click to unlock wish</p>
+                        <p class="wish-text hidden text-sm text-pink-100 font-serif mt-3 pt-3 border-t border-pink-500/30 animate-fadeIn"></p>
+                    </div>
+                </div>
+
+                <!-- Switch Page Button -->
+                <div class="pt-6">
+                    <button onclick="switchPage(2)" class="pulse-btn px-8 py-4 rounded-full bg-gradient-to-r from-pink-500 via-rose-500 to-cyan-500 text-white font-bold text-sm tracking-widest uppercase shadow-xl hover:scale-105 transition-all flex items-center space-x-3 mx-auto">
+                        <span>Enter Real-Time Snow & Peace</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 2: HEALTH, PEACE & LONGEVITY (Serene Real-Time Snowfall Theme) -->
+        <section id="page-2" class="page-container flex-col items-center justify-start px-4 md:px-12">
+            <div class="max-w-4xl w-full mx-auto text-center space-y-8">
+                
+                <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 text-xs md:text-sm tracking-widest uppercase font-bold">
+                    <i class="fa-solid fa-snowflake"></i> <span>Theme 2: Real-Time Snowfall & Ice Glow</span>
+                </div>
+
+                <h1 class="font-title text-4xl md:text-7xl font-black text-gradient-rgb leading-tight tracking-wide">
+                    Health & Serenity
+                </h1>
+                <p class="font-hand text-3xl md:text-5xl text-cyan-200">
+                    A calm winter haven dedicated to Avery's well-being ❄️
+                </p>
+
+                <!-- Heartfelt Paragraph Card -->
+                <div class="glass-card rgb-border p-6 md:p-12 text-left space-y-6 relative overflow-hidden">
+                    <div class="absolute -right-12 -bottom-12 text-9xl text-cyan-500/10 pointer-events-none">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+
+                    <p class="font-serif text-lg md:text-2xl text-cyan-100/90 leading-relaxed">
+                        Above all worldly possessions, my most earnest prayer for you, Avery, is vibrant health, pure peace, and unmatched vitality. May your body remain strong and resilient, and may your mind always feel like a peaceful sanctuary shielded from stress and anxiety.
+                    </p>
+                    <p class="font-serif text-lg md:text-2xl text-cyan-100/90 leading-relaxed">
+                        I wish you a long, long life filled with serene mornings, restful nights, and unending laughter that warms your heart. May every winter bring cozy memories and every spring bring new strength!
+                    </p>
+                </div>
+
+                <!-- Wellness Crystal Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+                    <div class="glass-card p-6 text-center border-cyan-500/30">
+                        <i class="fa-solid fa-shield-heart text-4xl text-cyan-400 mb-3"></i>
+                        <h4 class="font-serif font-bold text-lg text-cyan-200 mb-2">Vibrant Health</h4>
+                        <p class="text-xs text-cyan-100/80">May energy, strength, and physical well-being accompany every day of your year.</p>
+                    </div>
+
+                    <div class="glass-card p-6 text-center border-cyan-500/30">
+                        <i class="fa-solid fa-dove text-4xl text-cyan-400 mb-3"></i>
+                        <h4 class="font-serif font-bold text-lg text-cyan-200 mb-2">Unshakable Peace</h4>
+                        <p class="text-xs text-cyan-100/80">May tranquil serenity quiet your soul during every challenging moment.</p>
+                    </div>
+
+                    <div class="glass-card p-6 text-center border-cyan-500/30">
+                        <i class="fa-solid fa-infinity text-4xl text-cyan-400 mb-3"></i>
+                        <h4 class="font-serif font-bold text-lg text-cyan-200 mb-2">Flourishing Life</h4>
+                        <p class="text-xs text-cyan-100/80">Wishing you long decades filled with laughter, happiness, and prosperity.</p>
+                    </div>
+                </div>
+
+                <!-- Switch Page Button -->
+                <div class="pt-6">
+                    <button onclick="switchPage(3)" class="pulse-btn px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 text-white font-bold text-sm tracking-widest uppercase shadow-xl hover:scale-105 transition-all flex items-center space-x-3 mx-auto">
+                        <span>Continue to Our Friendship</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 3: OUR UNBREAKABLE FRIENDSHIP (Floating Balloons & Memory Cards) -->
+        <section id="page-3" class="page-container flex-col items-center justify-start px-4 md:px-12">
+            <div class="max-w-4xl w-full mx-auto text-center space-y-8">
+                
+                <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-purple-500/20 border border-purple-500/40 text-purple-300 text-xs md:text-sm tracking-widest uppercase font-bold">
+                    <i class="fa-solid fa-heart"></i> <span>Theme 3: Balloons & Interactive Memories</span>
+                </div>
+
+                <h1 class="font-title text-4xl md:text-7xl font-black text-gradient-rgb leading-tight tracking-wide">
+                    Our Friendship
+                </h1>
+                <p class="font-hand text-3xl md:text-5xl text-purple-200">
+                    Celebrating the priceless gift of knowing you, Avery 💜
+                </p>
+
+                <!-- Heartfelt Paragraph Card -->
+                <div class="glass-card rgb-border p-6 md:p-12 text-left space-y-6 relative overflow-hidden">
+                    <p class="font-serif text-lg md:text-2xl text-purple-100/90 leading-relaxed">
+                        Having a friend like you, Avery, is a rare treasure. True friends are hard to find, but you are the rarest gem—someone who listens without judgment, fills random days with unexpected laughter, and stands by my side through thick and thin.
+                    </p>
+                    <p class="font-serif text-lg md:text-2xl text-purple-100/90 leading-relaxed">
+                        From uncontrollable giggles to deep late-night conversations, every moment shared with you is etched into my heart. Thank you for being my rock, my confidante, and the most incredible best friend anyone could ever ask for!
+                    </p>
+                </div>
+
+                <!-- 3D Flip Memory Cards -->
+                <div class="text-left pt-2">
+                    <h3 class="font-serif font-bold text-xl text-purple-200 mb-4 text-center">
+                        <i class="fa-solid fa-hand-pointer mr-2"></i> Tap each card to reveal sweet memory notes!
+                    </h3>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        
+                        <!-- Card 1 -->
+                        <div class="flip-card h-56" onclick="this.classList.toggle('flipped'); playSparkleSound();">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front glass-card p-6 flex flex-col items-center justify-center border-purple-400/40 bg-purple-950/40">
+                                    <i class="fa-solid fa-face-smile-beam text-5xl text-purple-300 mb-3"></i>
+                                    <h4 class="font-title text-lg font-bold text-white">Endless Smiles</h4>
+                                    <span class="text-xs text-purple-300/70 mt-2">Tap to flip</span>
+                                </div>
+                                <div class="flip-card-back glass-card p-6 flex flex-col items-center justify-center bg-gradient-to-br from-purple-900 to-indigo-950 border-purple-300/50">
+                                    <p class="font-serif text-sm text-purple-100 leading-relaxed">
+                                        "For all the hilarious inside jokes and spontaneous giggles that make life so bright!"
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="flip-card h-56" onclick="this.classList.toggle('flipped'); playSparkleSound();">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front glass-card p-6 flex flex-col items-center justify-center border-purple-400/40 bg-purple-950/40">
+                                    <i class="fa-solid fa-hand-holding-hand text-5xl text-purple-300 mb-3"></i>
+                                    <h4 class="font-title text-lg font-bold text-white">Unconditional Support</h4>
+                                    <span class="text-xs text-purple-300/70 mt-2">Tap to flip</span>
+                                </div>
+                                <div class="flip-card-back glass-card p-6 flex flex-col items-center justify-center bg-gradient-to-br from-purple-900 to-indigo-950 border-purple-300/50">
+                                    <p class="font-serif text-sm text-purple-100 leading-relaxed">
+                                        "Through bright sunshine or heavy rain, thank you for always having my back no matter what."
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="flip-card h-56" onclick="this.classList.toggle('flipped'); playSparkleSound();">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front glass-card p-6 flex flex-col items-center justify-center border-purple-400/40 bg-purple-950/40">
+                                    <i class="fa-solid fa-infinity text-5xl text-purple-300 mb-3"></i>
+                                    <h4 class="font-title text-lg font-bold text-white">Forever Bond</h4>
+                                    <span class="text-xs text-purple-300/70 mt-2">Tap to flip</span>
+                                </div>
+                                <div class="flip-card-back glass-card p-6 flex flex-col items-center justify-center bg-gradient-to-br from-purple-900 to-indigo-950 border-purple-300/50">
+                                    <p class="font-serif text-sm text-purple-100 leading-relaxed">
+                                        "Distance or time can never change this connection. Here's to a lifetime of friendship!"
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Switch Page Button -->
+                <div class="pt-6">
+                    <button onclick="switchPage(4)" class="pulse-btn px-8 py-4 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-amber-500 text-white font-bold text-sm tracking-widest uppercase shadow-xl hover:scale-105 transition-all flex items-center space-x-3 mx-auto">
+                        <span>Enter Grand Party & Fireworks!</span>
+                        <i class="fa-solid fa-cake-candles"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 4: GRAND CELEBRATION (Blowable Cake, Gift Box & Fireworks Extravaganza) -->
+        <section id="page-4" class="page-container flex-col items-center justify-start px-4 md:px-12">
+            <div class="max-w-4xl w-full mx-auto text-center space-y-8">
+                
+                <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs md:text-sm tracking-widest uppercase font-bold">
+                    <i class="fa-solid fa-burst"></i> <span>Theme 4: Grand Party & Fireworks Canvas</span>
+                </div>
+
+                <h1 class="font-title text-4xl md:text-8xl font-black text-gradient-rgb leading-tight tracking-wider">
+                    HAPPY BIRTHDAY AVERY! 🥳
+                </h1>
+                <p class="font-hand text-3xl md:text-5xl text-amber-200">
+                    It's time to blow out the candles and make a magic wish! 🎉
+                </p>
+
+                <!-- INTERACTIVE BIRTHDAY CAKE SECTION -->
+                <div class="glass-card rgb-border p-8 md:p-12 flex flex-col items-center justify-center space-y-6 relative">
+                    
+                    <h3 id="cake-status-title" class="font-serif text-2xl md:text-3xl font-bold text-amber-200">
+                        🎂 Click/Tap the candles to blow them out!
+                    </h3>
+
+                    <!-- 3D LAYERED CAKE -->
+                    <div id="cake-container" onclick="extinguishCandles()" class="relative cursor-pointer py-6 my-2 transform hover:scale-105 transition-transform">
+                        
+                        <!-- CANDLES WITH DYNAMIC FLAMES -->
+                        <div class="flex justify-center space-x-8 relative z-20 mb-1">
+                            <div class="relative w-4 h-14 bg-gradient-to-b from-pink-300 to-pink-600 rounded-sm shadow-md">
+                                <div class="flame flame-elem"></div>
+                            </div>
+                            <div class="relative w-4 h-16 bg-gradient-to-b from-yellow-300 to-amber-600 rounded-sm shadow-md -top-2">
+                                <div class="flame flame-elem"></div>
+                            </div>
+                            <div class="relative w-4 h-14 bg-gradient-to-b from-cyan-300 to-blue-600 rounded-sm shadow-md">
+                                <div class="flame flame-elem"></div>
+                            </div>
+                        </div>
+
+                        <!-- CAKE TIER 1 (TOP) -->
+                        <div class="w-40 h-14 mx-auto bg-gradient-to-r from-pink-500 via-rose-400 to-pink-500 rounded-t-2xl border-b-4 border-pink-600/60 shadow-lg relative overflow-hidden flex items-center justify-center">
+                            <div class="absolute inset-x-0 top-0 h-3.5 bg-white/80 rounded-b-full"></div>
+                            <span class="text-sm font-black text-pink-950 tracking-widest font-title">AVERY</span>
+                        </div>
+
+                        <!-- CAKE TIER 2 (MIDDLE) -->
+                        <div class="w-56 h-16 mx-auto bg-gradient-to-r from-amber-200 via-amber-100 to-amber-200 rounded-t-xl border-b-4 border-amber-400/60 shadow-lg relative overflow-hidden">
+                            <div class="absolute inset-x-0 top-0 h-4 bg-pink-400/80 rounded-b-full"></div>
+                        </div>
+
+                        <!-- CAKE TIER 3 (BOTTOM) -->
+                        <div class="w-72 h-18 mx-auto bg-gradient-to-r from-purple-500 via-indigo-400 to-purple-500 rounded-t-xl border-b-4 border-purple-700/60 shadow-xl relative overflow-hidden">
+                            <div class="absolute inset-x-0 top-0 h-5 bg-white/90 rounded-b-full"></div>
+                        </div>
+
+                        <!-- CAKE PLATE -->
+                        <div class="w-88 h-5 mx-auto bg-slate-300 rounded-full shadow-2xl border-t-2 border-white"></div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-4 justify-center pt-2">
+                        <button onclick="triggerFireworksExtravaganza()" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-amber-400 via-yellow-500 to-orange-500 text-slate-950 font-extrabold text-sm shadow-xl hover:scale-105 transition-all flex items-center space-x-2">
+                            <i class="fa-solid fa-burst text-base"></i> <span>Launch Fireworks Show!</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- UNBOXING GIFT BOX SECTION -->
+                <div class="glass-card rgb-border p-8 md:p-12 flex flex-col items-center justify-center space-y-6">
+                    <h3 class="font-serif text-2xl md:text-3xl font-bold text-amber-200">
+                        🎁 Click to Unbox Avery's Surprise Gift!
+                    </h3>
+
+                    <!-- 3D Gift Box -->
+                    <div id="gift-box-elem" onclick="openGiftBox()" class="gift-box my-4">
+                        <div class="gift-lid">
+                            <div class="gift-ribbon-v"></div>
+                        </div>
+                        <div class="gift-body">
+                            <div class="gift-ribbon-v"></div>
+                            <div class="gift-ribbon-h"></div>
+                        </div>
+                    </div>
+
+                    <!-- Revealed Content -->
+                    <div id="gift-revealed-content" class="hidden glass-card p-6 md:p-8 border-amber-400/50 bg-amber-500/10 text-left space-y-4 max-w-2xl animate-fadeIn">
+                        <div class="flex items-center space-x-3 text-amber-300">
+                            <i class="fa-solid fa-crown text-3xl"></i>
+                            <h4 class="font-title text-xl font-bold">Official Birthday Decree!</h4>
+                        </div>
+                        <p class="font-serif text-base md:text-lg text-amber-100 leading-relaxed">
+                            "Dearest Avery, on this memorable day, may your year ahead be packed with magnificent triumphs, genuine warmth, delicious food, spontaneous road trips, and endless love. You are an incredible person and deserve all the happiness in the universe!"
+                        </p>
+                        <p class="font-hand text-3xl text-amber-300 text-right">
+                            — Warmest wishes always! ❤️
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Replay Journey -->
+                <div class="pt-4 pb-8">
+                    <button onclick="switchPage(1)" class="px-8 py-3 rounded-full glass-card text-xs font-bold uppercase tracking-wider text-amber-200 hover:bg-white/10 transition-all">
+                        <i class="fa-solid fa-rotate-left mr-2"></i> Replay Avery's Birthday Website
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- JAVASCRIPT & AUDIO ENGINE -->
+    <script>
+        let currentPage = 1;
+
+        function switchPage(pageNumber) {
+            if (pageNumber === currentPage) return;
+
+            const oldPageElem = document.getElementById(`page-${currentPage}`);
+            const newPageElem = document.getElementById(`page-${pageNumber}`);
+            
+            oldPageElem.classList.remove('active');
+            
+            setTimeout(() => {
+                currentPage = pageNumber;
+                newPageElem.classList.add('active');
+                updateNavButtons(pageNumber);
+                switchCanvasTheme(pageNumber);
+                playSparkleSound();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 350);
+        }
+
+        function updateNavButtons(activeNum) {
+            for (let i = 1; i <= 4; i++) {
+                const btn = document.getElementById(`nav-btn-${i}`);
+                if (!btn) continue;
+                if (i === activeNum) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('flex');
+        }
+
+        function revealWish(card, message) {
+            const wishText = card.querySelector('.wish-text');
+            if (wishText) {
+                wishText.innerText = message;
+                wishText.classList.remove('hidden');
+                playSparkleSound();
+            }
+        }
+
+        /* WEB AUDIO API - HAPPY BIRTHDAY SYNTHESIZER & FX */
+        let audioCtx = null;
+        let isMuted = true;
+        let songInterval = null;
+
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
+
+        function toggleAudio() {
+            initAudio();
+            const label = document.getElementById('audio-label');
+            const btn = document.getElementById('audio-toggle');
+
+            if (isMuted) {
+                isMuted = false;
+                label.innerText = "Mute Melody";
+                btn.classList.add('bg-cyan-500', 'text-slate-950');
+                playHappyBirthdayMelody();
+            } else {
+                isMuted = true;
+                label.innerText = "Play Melody";
+                btn.classList.remove('bg-cyan-500', 'text-slate-950');
+                stopMelody();
+            }
+        }
+
+        function playNote(freq, duration) {
+            if (isMuted || !audioCtx) return;
+            try {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+                gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + duration);
+            } catch(e) {}
+        }
+
+        function playHappyBirthdayMelody() {
+            const notes = [
+                { f: 261.63, d: 0.4 }, { f: 261.63, d: 0.4 }, { f: 293.66, d: 0.8 }, { f: 261.63, d: 0.8 }, { f: 349.23, d: 0.8 }, { f: 329.63, d: 1.2 },
+                { f: 261.63, d: 0.4 }, { f: 261.63, d: 0.4 }, { f: 293.66, d: 0.8 }, { f: 261.63, d: 0.8 }, { f: 392.00, d: 0.8 }, { f: 349.23, d: 1.2 }
+            ];
+            let idx = 0;
+            stopMelody();
+
+            songInterval = setInterval(() => {
+                if (isMuted) return;
+                const note = notes[idx];
+                playNote(note.f, note.d);
+                idx = (idx + 1) % notes.length;
+            }, 600);
+        }
+
+        function stopMelody() {
+            if (songInterval) {
+                clearInterval(songInterval);
+                songInterval = null;
+            }
+        }
+
+        function playSparkleSound() {
+            if (isMuted) return;
+            initAudio();
+            try {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(523.25, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(1046.50, audioCtx.currentTime + 0.35);
+
+                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.35);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.35);
+            } catch(e) {}
+        }
+
+        function playPopSound() {
+            if (isMuted) return;
+            initAudio();
+            try {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(180, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(40, audioCtx.currentTime + 0.25);
+
+                gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.25);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.25);
+            } catch(e) {}
+        }
+
+        /* REAL-TIME PHYSICS CANVAS ENGINE (SNOWFALL, PETALS, BALLOONS) */
+        const mainCanvas = document.getElementById('main-canvas');
+        const mainCtx = mainCanvas.getContext('2d');
+        let width = mainCanvas.width = window.innerWidth;
+        let height = mainCanvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = mainCanvas.width = window.innerWidth;
+            height = mainCanvas.height = window.innerHeight;
+        });
+
+        let particles = [];
+        let currentTheme = 1;
+
+        class DynamicParticle {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height - height;
+                this.size = Math.random() * 6 + 2;
+                this.speedY = Math.random() * 1.8 + 0.6;
+                this.speedX = Math.sin(Math.random() * Math.PI) * 1.2;
+                this.opacity = Math.random() * 0.8 + 0.2;
+                this.color = this.getThemeColor();
+            }
+
+            getThemeColor() {
+                if (currentTheme === 1) { // Rose Petals
+                    const c = ['#ff0055', '#ff4d8d', '#ff80ab', '#f43f5e'];
+                    return c[Math.floor(Math.random() * c.length)];
+                } else if (currentTheme === 2) { // Real-Time Snowfall
+                    return '#e0f2fe';
+                } else if (currentTheme === 3) { // Floating Balloons / Glowing Orbs
+                    const c = ['#a855f7', '#c084fc', '#38bdf8', '#e879f9', '#00e5ff'];
+                    return c[Math.floor(Math.random() * c.length)];
+                } else { // Multi-Colored Party Confetti
+                    const c = ['#ff0055', '#00e5ff', '#fbbf24', '#a855f7', '#22c55e'];
+                    return c[Math.floor(Math.random() * c.length)];
+                }
+            }
+
+            update() {
+                this.y += this.speedY;
+                this.x += Math.sin(this.y * 0.008) * this.speedX;
+
+                if (this.y > height + 20) {
+                    this.reset();
+                    this.y = -20;
+                }
+            }
+
+            draw() {
+                mainCtx.save();
+                mainCtx.globalAlpha = this.opacity;
+                mainCtx.fillStyle = this.color;
+
+                if (currentTheme === 2) { // Snowflakes with depth blur
+                    mainCtx.beginPath();
+                    mainCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    mainCtx.shadowBlur = 8;
+                    mainCtx.shadowColor = '#00e5ff';
+                    mainCtx.fill();
+                } else if (currentTheme === 3) { // Floating Balloon Orbs
+                    mainCtx.beginPath();
+                    mainCtx.arc(this.x, this.y, this.size * 2, 0, Math.PI * 2);
+                    mainCtx.shadowBlur = 12;
+                    mainCtx.shadowColor = this.color;
+                    mainCtx.fill();
+                } else { // Petals & Confetti
+                    mainCtx.beginPath();
+                    mainCtx.ellipse(this.x, this.y, this.size * 1.5, this.size, Math.PI / 4, 0, Math.PI * 2);
+                    mainCtx.fill();
+                }
+
+                mainCtx.restore();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < 70; i++) {
+                particles.push(new DynamicParticle());
+            }
+        }
+
+        function switchCanvasTheme(themeNum) {
+            currentTheme = themeNum;
+            initParticles();
+
+            const fwCanvas = document.getElementById('fireworks-canvas');
+            if (themeNum === 4) {
+                fwCanvas.classList.remove('hidden');
+                triggerFireworksExtravaganza();
+            } else {
+                fwCanvas.classList.add('hidden');
+            }
+        }
+
+        function animateMainCanvas() {
+            mainCtx.clearRect(0, 0, width, height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateMainCanvas);
+        }
+
+        /* PAGE 4 FIREWORKS ENGINE */
+        const fwCanvas = document.getElementById('fireworks-canvas');
+        const fwCtx = fwCanvas.getContext('2d');
+        let fwWidth = fwCanvas.width = window.innerWidth;
+        let fwHeight = fwCanvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            fwWidth = fwCanvas.width = window.innerWidth;
+            fwHeight = fwCanvas.height = window.innerHeight;
+        });
+
+        let fireworks = [];
+        let sparklers = [];
+
+        class FireworkRocket {
+            constructor(sx, sy, tx, ty) {
+                this.x = sx;
+                this.y = sy;
+                this.sx = sx;
+                this.sy = sy;
+                this.tx = tx;
+                this.ty = ty;
+                this.distanceToTarget = Math.hypot(tx - sx, ty - sy);
+                this.distanceTraveled = 0;
+                this.angle = Math.atan2(ty - sy, tx - sx);
+                this.speed = 5;
+                this.acceleration = 1.04;
+                this.hue = Math.random() * 360;
+            }
+
+            update(index) {
+                this.speed *= this.acceleration;
+                const vx = Math.cos(this.angle) * this.speed;
+                const vy = Math.sin(this.angle) * this.speed;
+                this.distanceTraveled = Math.hypot(this.x + vx - this.sx, this.y + vy - this.sy);
+
+                if (this.distanceTraveled >= this.distanceToTarget) {
+                    createSparkles(this.tx, this.ty, this.hue);
+                    fireworks.splice(index, 1);
+                    playPopSound();
+                } else {
+                    this.x += vx;
+                    this.y += vy;
+                }
+            }
+
+            draw() {
+                fwCtx.beginPath();
+                fwCtx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+                fwCtx.fillStyle = `hsl(${this.hue}, 100%, 60%)`;
+                fwCtx.fill();
+            }
+        }
+
+        class SparkleParticle {
+            constructor(x, y, hue) {
+                this.x = x;
+                this.y = y;
+                this.angle = Math.random() * Math.PI * 2;
+                this.speed = Math.random() * 12 + 1;
+                this.friction = 0.95;
+                this.gravity = 0.8;
+                this.hue = hue || Math.random() * 360;
+                this.alpha = 1;
+                this.decay = Math.random() * 0.025 + 0.015;
+            }
+
+            update(index) {
+                this.speed *= this.friction;
+                this.x += Math.cos(this.angle) * this.speed;
+                this.y += Math.sin(this.angle) * this.speed + this.gravity;
+                this.alpha -= this.decay;
+
+                if (this.alpha <= this.decay) {
+                    sparklers.splice(index, 1);
+                }
+            }
+
+            draw() {
+                fwCtx.save();
+                fwCtx.globalAlpha = this.alpha;
+                fwCtx.beginPath();
+                fwCtx.arc(this.x, this.y, 2.5, 0, Math.PI * 2);
+                fwCtx.fillStyle = `hsl(${this.hue}, 100%, 60%)`;
+                fwCtx.shadowBlur = 10;
+                fwCtx.shadowColor = `hsl(${this.hue}, 100%, 50%)`;
+                fwCtx.fill();
+                fwCtx.restore();
+            }
+        }
+
+        function createSparkles(x, y, hue) {
+            let count = 50;
+            while (count--) {
+                sparklers.push(new SparkleParticle(x, y, hue));
+            }
+        }
+
+        function triggerFireworksExtravaganza() {
+            for (let i = 0; i < 6; i++) {
+                setTimeout(() => {
+                    const startX = fwWidth / 2 + (Math.random() - 0.5) * 400;
+                    const targetX = Math.random() * fwWidth;
+                    const targetY = Math.random() * (fwHeight * 0.6);
+                    fireworks.push(new FireworkRocket(startX, fwHeight, targetX, targetY));
+                }, i * 250);
+            }
+        }
+
+        fwCanvas.addEventListener('click', (e) => {
+            if (currentTheme === 4) {
+                fireworks.push(new FireworkRocket(fwWidth / 2, fwHeight, e.clientX, e.clientY));
+            }
+        });
+
+        function animateFireworks() {
+            if (currentTheme === 4) {
+                fwCtx.globalCompositeOperation = 'destination-out';
+                fwCtx.fillStyle = 'rgba(0, 0, 0, 0.2)';
+                fwCtx.fillRect(0, 0, fwWidth, fwHeight);
+                fwCtx.globalCompositeOperation = 'lighter';
+
+                let i = fireworks.length;
+                while (i--) {
+                    fireworks[i].draw();
+                    fireworks[i].update(i);
+                }
+
+                let j = sparklers.length;
+                while (j--) {
+                    sparklers[j].draw();
+                    sparklers[j].update(j);
+                }
+            } else {
+                fwCtx.clearRect(0, 0, fwWidth, fwHeight);
+            }
+            requestAnimationFrame(animateFireworks);
+        }
+
+        /* CAKE & GIFT UNBOXING INTERACTION */
+        function extinguishCandles() {
+            const flames = document.querySelectorAll('.flame-elem');
+            const title = document.getElementById('cake-status-title');
+
+            flames.forEach(f => f.classList.add('extinguished'));
+
+            if (title) {
+                title.innerHTML = "✨ Wish Granted! May all your birthday dreams come true, Avery! 🎉";
+                title.classList.add('text-amber-400');
+            }
+
+            triggerFireworksExtravaganza();
+            playSparkleSound();
+        }
+
+        function openGiftBox() {
+            const giftBox = document.getElementById('gift-box-elem');
+            const content = document.getElementById('gift-revealed-content');
+
+            if (giftBox) {
+                giftBox.classList.add('open');
+            }
+
+            setTimeout(() => {
+                if (content) {
+                    content.classList.remove('hidden');
+                }
+                triggerFireworksExtravaganza();
+                playSparkleSound();
+            }, 450);
+        }
+
+        /* INIT ON LOAD */
+        window.onload = function() {
+            initParticles();
+            animateMainCanvas();
+            animateFireworks();
+        };
+    </script>
+</body>
+</html>
